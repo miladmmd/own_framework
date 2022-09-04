@@ -1,0 +1,22 @@
+{
+    "name": "root/own_framework",
+    "autoload": {
+        "psr-4": {
+            "Root\\OwnFramework\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "milad mohammadi"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {
+            "app\\" : "./"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
