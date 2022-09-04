@@ -5,7 +5,12 @@
     <form method="post" action="/register">
         <div class="form-group">
             <label>name</label>
-            <input name="name" type="text" class="form-control">
+            <input name="firstname" type="text" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>lastname</label>
+            <input name="lastname" type="text" class="form-control">
         </div>
 
         <div class="form-group">
@@ -21,7 +26,7 @@
 
         <div class="form-group">
             <label>confirm password</label>
-            <input name="confirmpassword" type="password" class="form-control">
+            <input name="passwordConfirm" type="password" class="form-control">
         </div>
 
 
