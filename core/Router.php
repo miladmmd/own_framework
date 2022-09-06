@@ -63,6 +63,7 @@
 
         public function renderView($view,$params = [])
         {
+//            print_r($view);
 
 
             $layoutContent = $this->layoutContent();
