@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>own_framework</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -43,7 +43,14 @@
     </div>
 </nav>
 
-{{content}}
+    <div class="container">
+        <?php if (\app\core\Application::$app->session->getFlash('success')){; ?>
+        <div class="alert alert-success">
+             <?php echo \app\core\Application::$app->session->getFlash('success') ?>
+        </div>
+       <?php } ?>
+        {{content}}
+    </div>
 
 <!-- Optional JavaScript; choose one of the two! -->
 

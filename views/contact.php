@@ -1,5 +1,5 @@
 <?php ?>
-<div class="container">
+
     <form method="post" action="/contact">
         <div class="form-group">
             <label >subject</label>
@@ -20,5 +20,5 @@
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-</div>
+
 

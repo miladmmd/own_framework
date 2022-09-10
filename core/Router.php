@@ -50,6 +50,7 @@
 
 
             if(is_array($callback)) {
+
                 Application::$app->controller = new $callback[0]();
                 $callback[0] = Application::$app->controller;
             }

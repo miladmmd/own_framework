@@ -39,7 +39,6 @@ class Database
             $this->log("Applied migration $migration");
             $instance->up();
             $this->log("Applied migration $migration");
-
             $newMigrations[] = $migration;
         }
 
@@ -74,6 +73,11 @@ class Database
         $str = implode(",",array_map(fn($m)=> "('$m')",$migrations));
         $statement = $this->pdo->prepare("INSERT INTO migrations (migration) VALUES $str");
         $statement->execute();
+    }
+
+    public function prepare($sql)
+    {
+        return $this->pdo->prepare($sql);
     }
 
     public function  log($message)
