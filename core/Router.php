@@ -58,7 +58,7 @@
 
 
 
-            return call_user_func($callback,$this->request);
+            return call_user_func($callback,$this->request,$this->response);
 
         }
 
