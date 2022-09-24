@@ -13,6 +13,7 @@
 
 
     $config = [
+        'userClass' => \app\models\User::class,
         'db' => [
             'dsn' => $_ENV['DB_DSN'],
             'user' => $_ENV['DB_USER'],
@@ -37,6 +38,8 @@ $app = new Application(dirname(__DIR__),$config);
     $app->router->post('/login',[AuthController::class,'login']);
     $app->router->get('/register',[AuthController::class,'register']);
     $app->router->post('/register',[AuthController::class,'register']);
+    $app->router->get('/logout',[AuthController::class,'logout']);
+    $app->router->get('/profile',[AuthController::class,'profile']);
 
 
 

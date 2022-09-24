@@ -1,4 +1,10 @@
-<?php ?>
+<?php
+
+/** @var $this \app\core\View */
+
+$this->title = "contact";
+
+?>
 
     <form method="post" action="/contact">
         <div class="form-group">

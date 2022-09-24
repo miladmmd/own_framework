@@ -2,6 +2,8 @@
 
  namespace app\core;
 
+    use app\core\exception\NotFoundException;
+
     class Router
     {
         public Request $request;
@@ -38,59 +40,33 @@
             if($callback === false) {
 
                 $this->response->setStatusCode(404);
-                return $this->renderView("_404");
+                throw new NotFoundException();
+//                return $this->renderView("_404");
 
             }
             
             if(is_string($callback)){
 
-                return $this->renderView($callback);
+                return Application::$app->view->renderView($callback);
             }
-
-
 
             if(is_array($callback)) {
 
-                Application::$app->controller = new $callback[0]();
+                /** @var Controller $controller */
+                $controller = new $callback[0]();
+
+                  Application::$app->controller = $controller;
+
+                $controller->action = $callback[1];
+                foreach ($controller->getMiddlewares() as $middleware ) {
+                    $middleware->execute();
+                }
                 $callback[0] = Application::$app->controller;
             }
-
-
-
 
             return call_user_func($callback,$this->request,$this->response);
 
         }
 
-        public function renderView($view,$params = [])
-        {
-//            print_r($view);
-
-
-            $layoutContent = $this->layoutContent();
-            $viewContent = $this->renderOnlyView($view,$params);
-            return str_replace('{{content}}',$viewContent,$layoutContent);
-            include_once Application::$ROOT_DIR."/views/$view.php";
-            
-        }
-
-        protected  function layoutContent()
-        {
-
-            $layout = Application::$app->controller->layout;
-            ob_start();
-            include_once Application::$ROOT_DIR."/views/layouts/$layout.php";
-            return ob_get_clean();
-        }
-
-        protected function renderOnlyView($view,$params){
-
-            foreach ($params as  $key=>$val) {
-                $$key = $val;
-            }
-            ob_start();
-            include_once Application::$ROOT_DIR."/views/$view.php";
-            return ob_get_clean();
-        }
 
     }

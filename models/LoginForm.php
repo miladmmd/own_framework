@@ -43,8 +43,8 @@ class LoginForm extends Model
             return false;
         }
 
-        var_dump($user);
 
-        Application::$app->login($user);
+
+        return Application::$app->login($user);
     }
 }
