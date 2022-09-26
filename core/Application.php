@@ -1,5 +1,7 @@
 <?php
     namespace app\core;
+        use app\core\db\Database;
+        use app\core\db\DbModel;
         use app\models\User;
 
         class Application
@@ -18,7 +20,7 @@
             public ?Controller $controller = null;
             public Session $session;
             public View $view;
-            public ?DbModel $user;
+            public ?UserModel $user;
             public function __construct($rootDir,array $config)
             {
                 $this->userClass = $config['userClass'];
@@ -77,7 +79,7 @@
                 $this->controller = $controller;
             }
 
-            public function login(DbModel $user)
+            public function login(UserModel $user)
             {
 
                 $this->user = $user;
